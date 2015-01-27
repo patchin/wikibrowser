@@ -32,6 +32,9 @@
 {
     NSString *searchTerm = searchBar.text;
 
+    // Dismiss keyboard.
+    [searchBar endEditing:YES];
+    
     // Perform wiki search with the string.
 
     NSString *strFormat = @"http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=%@&srprop=timestamp&format=json";
@@ -46,14 +49,13 @@
      {
          if (data.length > 0 && connectionError == nil)
          {
-             NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
+             NSDictionary *searchResult = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:NULL];
-             //self.greetingId.text = [[greeting objectForKey:@"id"] stringValue];
-             //self.greetingContent.text = [greeting objectForKey:@"content"];
-             NSLog(@"Got data.\n");
+             NSLog(@"Got data: %@\n", searchResult);
              
-             m_searchResults = [[greeting objectForKey:@"query"] objectForKey:@"search"];
+             m_searchResults = [[searchResult objectForKey:@"query"] objectForKey:@"search"];
+             m_sroffset = [[[[searchResult objectForKey:@"query-continue"] objectForKey:@"search"] objectForKey:@"sroffset"] integerValue];
              [m_tableView reloadData];
          }
      }];

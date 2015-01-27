@@ -13,6 +13,7 @@
     IBOutlet UISearchBar *m_searchBar;
     IBOutlet UITableView *m_tableView;
     NSArray *m_searchResults;
+    NSInteger m_sroffset;
 }
 
 @end
