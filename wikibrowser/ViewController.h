@@ -13,8 +13,14 @@
     IBOutlet UISearchBar *m_searchBar;
     IBOutlet UITableView *m_tableView;
     NSArray *m_searchResults;
-    NSInteger m_sroffset;
+    NSInteger m_srOffset;
+    NSInteger m_pageSize;
+    NSInteger m_totalPages;
+    NSString *m_searchTerm;
 }
+
+- (IBAction)onPrev:(id)sender;
+- (IBAction)onNext:(id)sender;
 
 @end
 

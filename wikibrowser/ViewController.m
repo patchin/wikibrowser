@@ -24,7 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    m_pageSize = 10;
+    m_srOffset = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,15 +37,19 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSString *searchTerm = searchBar.text;
+    m_searchTerm = searchBar.text;
 
     // Dismiss keyboard.
     [searchBar endEditing:YES];
     
-    // Perform wiki search with the string.
+    [self performSearch];
+}
 
-    NSString *strFormat = @"http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=%@&srprop=timestamp&format=json";
-    NSString *strUrl = [NSString stringWithFormat:strFormat, [searchTerm urlEncodeForWiki]];
+- (void)performSearch {
+    // Perform wiki search with the string.
+    
+    NSString *strFormat = @"http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=%@&srprop=timestamp&format=json&sroffset=%i";
+    NSString *strUrl = [NSString stringWithFormat:strFormat, [m_searchTerm urlEncodeForWiki], m_srOffset];
     
     NSURL *url = [NSURL URLWithString:strUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -56,14 +61,15 @@
          if (data.length > 0 && connectionError == nil)
          {
              NSDictionary *searchResult = [NSJSONSerialization JSONObjectWithData:data
-                                                                      options:0
-                                                                        error:NULL];
+                                                                          options:0
+                                                                            error:NULL];
 #ifdef DEBUG
              NSLog(@"Got data: %@\n", searchResult);
 #endif
              
              m_searchResults = [[searchResult objectForKey:@"query"] objectForKey:@"search"];
-             m_sroffset = [[[[searchResult objectForKey:@"query-continue"] objectForKey:@"search"] objectForKey:@"sroffset"] integerValue];
+             //m_sroffset = [[[[searchResult objectForKey:@"query-continue"] objectForKey:@"search"] objectForKey:@"sroffset"] integerValue];
+             m_totalPages = [[[[searchResult objectForKey:@"query"] objectForKey:@"searchinfo"] objectForKey:@"totalhits"] integerValue];
              [m_tableView reloadData];
          }
      }];
@@ -74,6 +80,28 @@
     NSString *entry = [title urlEncodeForWiki];
     NSString *strUrl = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@", entry];
     return strUrl;
+}
+
+- (IBAction)onPrev:(id)sender
+{
+    m_srOffset -= m_pageSize;
+    if (m_srOffset < 0) {
+        m_srOffset = 0;
+    }
+    
+    // Perform search with the current search term.
+    [self performSearch];
+}
+
+- (IBAction)onNext:(id)sender
+{
+    m_srOffset += m_pageSize;
+    if (m_srOffset > m_totalPages) {
+        m_srOffset = m_totalPages - m_pageSize;
+    }
+    
+    // Perform search with the current search term.
+    [self performSearch];
 }
 
 #pragma mark - UITableViewDataSource

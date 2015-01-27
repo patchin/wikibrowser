@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jph-po-wjC">
-                                <rect key="frame" x="0.0" y="77" width="600" height="523"/>
+                                <rect key="frame" x="0.0" y="77" width="600" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="TPI-Y1-dcK"/>
@@ -31,17 +31,44 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="E0u-qt-LTd"/>
                                 </connections>
                             </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVy-10-BnP">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Prev" id="4wt-aZ-a88">
+                                        <connections>
+                                            <action selector="onPrev:" destination="BYZ-38-t0r" id="wcp-jj-4HA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yBY-3Z-Vno"/>
+                                    <barButtonItem title="Page 1 of 100" id="nwg-ZW-oZW"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="M4a-Da-jGG"/>
+                                    <barButtonItem title="Next" id="4x1-oo-Nw9">
+                                        <connections>
+                                            <action selector="onNext:" destination="BYZ-38-t0r" id="BVc-iH-xev"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jph-po-wjC" firstAttribute="top" secondItem="7mJ-J1-d1y" secondAttribute="bottom" id="0xF-1U-m4w"/>
                             <constraint firstAttribute="bottom" secondItem="jph-po-wjC" secondAttribute="bottom" id="52O-ZB-Tt0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tVy-10-BnP" secondAttribute="bottom" id="CY5-Im-ZR0"/>
                             <constraint firstItem="7mJ-J1-d1y" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="13" id="FxR-SG-NUn"/>
                             <constraint firstAttribute="trailing" secondItem="jph-po-wjC" secondAttribute="trailing" id="GHU-tN-aAP"/>
                             <constraint firstItem="jph-po-wjC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JrX-4C-bNc"/>
+                            <constraint firstAttribute="trailing" secondItem="tVy-10-BnP" secondAttribute="trailing" id="LTX-E9-8UK"/>
                             <constraint firstItem="7mJ-J1-d1y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OMB-71-a7e"/>
+                            <constraint firstItem="tVy-10-BnP" firstAttribute="top" secondItem="jph-po-wjC" secondAttribute="bottom" id="Sd9-AZ-7aj"/>
+                            <constraint firstItem="tVy-10-BnP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ck1-6b-o08"/>
                             <constraint firstAttribute="trailing" secondItem="7mJ-J1-d1y" secondAttribute="trailing" id="oqk-aS-MUs"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="52O-ZB-Tt0"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="m_searchBar" destination="7mJ-J1-d1y" id="25U-5P-ZBg"/>
