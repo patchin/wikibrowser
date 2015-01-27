@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,99 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jph-po-wjC">
+                                <rect key="frame" x="0.0" y="77" width="600" height="523"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="TPI-Y1-dcK"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="QwX-Nc-fa6"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7mJ-J1-d1y">
+                                <rect key="frame" x="0.0" y="33" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="E0u-qt-LTd"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jph-po-wjC" firstAttribute="top" secondItem="7mJ-J1-d1y" secondAttribute="bottom" id="0xF-1U-m4w"/>
+                            <constraint firstAttribute="bottom" secondItem="jph-po-wjC" secondAttribute="bottom" id="52O-ZB-Tt0"/>
+                            <constraint firstItem="7mJ-J1-d1y" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="13" id="FxR-SG-NUn"/>
+                            <constraint firstAttribute="trailing" secondItem="jph-po-wjC" secondAttribute="trailing" id="GHU-tN-aAP"/>
+                            <constraint firstItem="jph-po-wjC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JrX-4C-bNc"/>
+                            <constraint firstItem="7mJ-J1-d1y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OMB-71-a7e"/>
+                            <constraint firstAttribute="trailing" secondItem="7mJ-J1-d1y" secondAttribute="trailing" id="oqk-aS-MUs"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="m_searchBar" destination="7mJ-J1-d1y" id="25U-5P-ZBg"/>
+                        <outlet property="m_tableView" destination="jph-po-wjC" id="Zwg-10-96v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="438" y="197"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="7zS-R3-0lb">
+            <objects>
+                <viewController storyboardIdentifier="webvc" id="DGo-BH-Snx" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Svz-4Y-Jod"/>
+                        <viewControllerLayoutGuide type="bottom" id="3RT-Rl-iRM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jB6-ig-FgM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZa-Aj-PPT">
+                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="DGo-BH-Snx" id="sU9-Te-LKu"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdA-RG-oOb">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Back to Search" id="jxH-ty-HEa">
+                                        <connections>
+                                            <action selector="backToSearchPage:" destination="DGo-BH-Snx" id="1ii-GZ-bep"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cZa-Aj-PPT" firstAttribute="top" secondItem="Svz-4Y-Jod" secondAttribute="bottom" id="5Hl-ka-GeE"/>
+                            <constraint firstAttribute="trailing" secondItem="cZa-Aj-PPT" secondAttribute="trailing" id="6AS-LO-OhH"/>
+                            <constraint firstItem="3RT-Rl-iRM" firstAttribute="top" secondItem="PdA-RG-oOb" secondAttribute="bottom" id="Bdb-cj-sCp"/>
+                            <constraint firstItem="3RT-Rl-iRM" firstAttribute="top" secondItem="cZa-Aj-PPT" secondAttribute="bottom" id="Gsf-Fh-4AN"/>
+                            <constraint firstItem="cZa-Aj-PPT" firstAttribute="leading" secondItem="jB6-ig-FgM" secondAttribute="leading" id="Hgo-5k-ijl"/>
+                            <constraint firstItem="PdA-RG-oOb" firstAttribute="top" secondItem="cZa-Aj-PPT" secondAttribute="bottom" id="PSX-p5-XFI"/>
+                            <constraint firstItem="cZa-Aj-PPT" firstAttribute="top" secondItem="jB6-ig-FgM" secondAttribute="top" id="cAP-x4-LE4"/>
+                            <constraint firstAttribute="trailing" secondItem="PdA-RG-oOb" secondAttribute="trailing" id="oUH-9b-K28"/>
+                            <constraint firstItem="PdA-RG-oOb" firstAttribute="leading" secondItem="jB6-ig-FgM" secondAttribute="leading" id="p9A-WD-n04"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cAP-x4-LE4"/>
+                                <exclude reference="Gsf-Fh-4AN"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="m_webView" destination="cZa-Aj-PPT" id="lj6-Wd-vnP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="08d-Zq-pVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="197"/>
         </scene>
     </scenes>
 </document>

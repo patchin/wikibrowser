@@ -14,6 +14,8 @@
 		EF7C52981A773C9A00743AB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF7C52971A773C9A00743AB1 /* Images.xcassets */; };
 		EF7C529B1A773C9A00743AB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF7C52991A773C9A00743AB1 /* LaunchScreen.xib */; };
 		EF7C52A71A773C9A00743AB1 /* wikibrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52A61A773C9A00743AB1 /* wikibrowserTests.m */; };
+		EF7C52B21A77474400743AB1 /* NSString+UrlEncodeForWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52B11A77474400743AB1 /* NSString+UrlEncodeForWiki.m */; };
+		EF7C52B51A774B0200743AB1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52B41A774B0200743AB1 /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		EF7C52A01A773C9A00743AB1 /* wikibrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wikibrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7C52A51A773C9A00743AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7C52A61A773C9A00743AB1 /* wikibrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = wikibrowserTests.m; sourceTree = "<group>"; };
+		EF7C52B01A77474400743AB1 /* NSString+UrlEncodeForWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UrlEncodeForWiki.h"; sourceTree = "<group>"; };
+		EF7C52B11A77474400743AB1 /* NSString+UrlEncodeForWiki.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+UrlEncodeForWiki.m"; sourceTree = "<group>"; };
+		EF7C52B31A774B0200743AB1 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		EF7C52B41A774B0200743AB1 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,10 @@
 				EF7C52971A773C9A00743AB1 /* Images.xcassets */,
 				EF7C52991A773C9A00743AB1 /* LaunchScreen.xib */,
 				EF7C528A1A773C9A00743AB1 /* Supporting Files */,
+				EF7C52B01A77474400743AB1 /* NSString+UrlEncodeForWiki.h */,
+				EF7C52B11A77474400743AB1 /* NSString+UrlEncodeForWiki.m */,
+				EF7C52B31A774B0200743AB1 /* WebViewController.h */,
+				EF7C52B41A774B0200743AB1 /* WebViewController.m */,
 			);
 			path = wikibrowser;
 			sourceTree = "<group>";
@@ -220,8 +230,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF7C52931A773C9A00743AB1 /* ViewController.m in Sources */,
+				EF7C52B51A774B0200743AB1 /* WebViewController.m in Sources */,
 				EF7C52901A773C9A00743AB1 /* AppDelegate.m in Sources */,
 				EF7C528D1A773C9A00743AB1 /* main.m in Sources */,
+				EF7C52B21A77474400743AB1 /* NSString+UrlEncodeForWiki.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
