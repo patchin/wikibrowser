@@ -79,12 +79,20 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
 
     NSDictionary *searchEntry = [m_searchResults objectAtIndex:row];
     cell.textLabel.text = [searchEntry objectForKey:@"title"];
-    cell.detailTextLabel.text = [searchEntry objectForKey:@"timestamp"];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSString *input = [searchEntry objectForKey:@"timestamp"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"]; //iso 8601 format
+    NSDate *outputDate = [dateFormatter dateFromString:input];
+
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateStyle:NSDateFormatterFullStyle];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Last edited: %@",[outputFormatter stringFromDate:outputDate]];
     
     return cell;
 }
