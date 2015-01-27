@@ -10,6 +10,12 @@
 #import "NSString+UrlEncodeForWiki.h"
 #import "WebViewController.h"
 
+// TODO: No results message.
+// TODO: Progress indicator.
+// TODO: Paging.
+// TODO: Fancier dates (n days ago, n hours ago)
+// TODO: Unit testing.
+
 @interface ViewController ()
 
 @end
@@ -52,7 +58,9 @@
              NSDictionary *searchResult = [NSJSONSerialization JSONObjectWithData:data
                                                                       options:0
                                                                         error:NULL];
+#ifdef DEBUG
              NSLog(@"Got data: %@\n", searchResult);
+#endif
              
              m_searchResults = [[searchResult objectForKey:@"query"] objectForKey:@"search"];
              m_sroffset = [[[[searchResult objectForKey:@"query-continue"] objectForKey:@"search"] objectForKey:@"sroffset"] integerValue];
