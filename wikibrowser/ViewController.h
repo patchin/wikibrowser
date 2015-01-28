@@ -12,11 +12,14 @@
 {
     IBOutlet UISearchBar *m_searchBar;
     IBOutlet UITableView *m_tableView;
+    IBOutlet UIBarButtonItem *m_pagingLabel;
     NSArray *m_searchResults;
     NSInteger m_srOffset;
-    NSInteger m_pageSize;
-    NSInteger m_totalPages;
+    int m_currPage;
+    int m_pageSize;
+    int m_totalHits;
     NSString *m_searchTerm;
+    UIView *m_activityView;
 }
 
 - (IBAction)onPrev:(id)sender;
