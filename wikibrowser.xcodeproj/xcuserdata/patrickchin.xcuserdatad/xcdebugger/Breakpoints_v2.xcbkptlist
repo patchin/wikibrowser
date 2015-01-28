@@ -115,5 +115,107 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wikibrowserTests/wikibrowserTests.m"
+            timestampString = "444121967.00603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-testUrlEncodeForWiki"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[wikibrowserTests testUrlEncodeForWiki]"
+                  moduleName = "wikibrowserTests"
+                  urlString = "file:///Users/patrickchin/proj/iphone/wikibrowser/wikibrowserTests/wikibrowserTests.m"
+                  timestampString = "444121584.632779"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[wikibrowserTests testUrlEncodeForWiki]"
+                  moduleName = "wikibrowserTests"
+                  urlString = "file:///Users/patrickchin/proj/iphone/wikibrowser/wikibrowserTests/wikibrowserTests.m"
+                  timestampString = "444121584.633026"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "107">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[wikibrowserTests testUrlEncodeForWiki]"
+                  moduleName = "wikibrowserTests"
+                  urlString = "file:///Users/patrickchin/proj/iphone/wikibrowser/wikibrowserTests/wikibrowserTests.m"
+                  timestampString = "444121584.633431"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "121">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[wikibrowserTests testUrlEncodeForWiki]"
+                  moduleName = "wikibrowserTests"
+                  urlString = "file:///Users/patrickchin/proj/iphone/wikibrowser/wikibrowserTests/wikibrowserTests.m"
+                  timestampString = "444121584.633791"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "918">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[wikibrowserTests testUrlEncodeForWiki]"
+                  moduleName = "wikibrowserTests"
+                  urlString = "file:///Users/patrickchin/proj/iphone/wikibrowser/wikibrowserTests/wikibrowserTests.m"
+                  timestampString = "444121584.634209"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "1046">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[wikibrowserTests testUrlEncodeForWiki]"
+                  moduleName = "wikibrowserTests"
+                  urlString = "file:///Users/patrickchin/proj/iphone/wikibrowser/wikibrowserTests/wikibrowserTests.m"
+                  timestampString = "444121584.634408"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "1533">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

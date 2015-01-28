@@ -23,9 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    m_pageSize = 10;
-    m_srOffset = 0;
-    m_currPage = 1;
+    m_pageSize  = 10;
+    m_srOffset  = 0;
+    m_currPage  = 1;
     m_totalHits = 0;
     [m_pagingLabel setTitle:@""];
 }
@@ -40,8 +40,8 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     m_searchTerm = searchBar.text;
     // New search being performed so reset some vars.
-    m_srOffset = 0;
-    m_currPage = 1;
+    m_srOffset  = 0;
+    m_currPage  = 1;
     m_totalHits = 0;
     
     // Dismiss keyboard.
@@ -54,7 +54,6 @@
     // Perform wiki search with the string.
     NSString *strFormat = @"http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=%@&srprop=timestamp&format=json&sroffset=%i";
     NSString *strUrl = [NSString stringWithFormat:strFormat, [m_searchTerm urlEncodeForWiki], m_srOffset];
-    
     NSURL *url = [NSURL URLWithString:strUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -67,9 +66,9 @@
              NSDictionary *searchResult = [NSJSONSerialization JSONObjectWithData:data
                                                                           options:0
                                                                             error:NULL];
-#ifdef DEBUG
+             #ifdef DEBUG
              NSLog(@"Got data: %@\n", searchResult);
-#endif
+             #endif
              
              m_searchResults = [[searchResult objectForKey:@"query"] objectForKey:@"search"];
              m_totalHits = [[[[searchResult objectForKey:@"query"] objectForKey:@"searchinfo"] objectForKey:@"totalhits"] intValue];

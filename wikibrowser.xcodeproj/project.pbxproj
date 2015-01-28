@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF4672FB1A78C10500EA4D4C /* NSString+UrlEncodeForWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52B11A77474400743AB1 /* NSString+UrlEncodeForWiki.m */; };
 		EF7C528D1A773C9A00743AB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C528C1A773C9A00743AB1 /* main.m */; };
 		EF7C52901A773C9A00743AB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C528F1A773C9A00743AB1 /* AppDelegate.m */; };
 		EF7C52931A773C9A00743AB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52921A773C9A00743AB1 /* ViewController.m */; };
@@ -242,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF7C52A71A773C9A00743AB1 /* wikibrowserTests.m in Sources */,
+				EF4672FB1A78C10500EA4D4C /* NSString+UrlEncodeForWiki.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +428,7 @@
 				EF7C52AC1A773C9A00743AB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF7C52AD1A773C9A00743AB1 /* Build configuration list for PBXNativeTarget "wikibrowserTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +437,7 @@
 				EF7C52AF1A773C9A00743AB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
