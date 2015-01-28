@@ -26,6 +26,7 @@
     m_pageSize = 10;
     m_srOffset = 0;
     m_currPage = 1;
+    m_totalHits = 0;
     [m_pagingLabel setTitle:@""];
 }
 
@@ -36,12 +37,12 @@
 
 #pragma mark - UISearchBarDelegate
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     m_searchTerm = searchBar.text;
     // New search being performed so reset some vars.
     m_srOffset = 0;
     m_currPage = 1;
+    m_totalHits = 0;
     
     // Dismiss keyboard.
     [searchBar endEditing:YES];
@@ -49,8 +50,7 @@
     [self performSearch];
 }
 
-- (void)performSearch
-{
+- (void)performSearch {
     // Perform wiki search with the string.
     NSString *strFormat = @"http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=%@&srprop=timestamp&format=json&sroffset=%i";
     NSString *strUrl = [NSString stringWithFormat:strFormat, [m_searchTerm urlEncodeForWiki], m_srOffset];
@@ -102,15 +102,13 @@
     [self showActivityViewer];
 }
 
-- (NSString *)getUrlFromTitle:(NSString *)title
-{
+- (NSString *)getUrlFromTitle:(NSString *)title {
     NSString *entry = [title urlEncodeForWiki];
     NSString *strUrl = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@", entry];
     return strUrl;
 }
 
-- (IBAction)onPrev:(id)sender
-{
+- (IBAction)onPrev:(id)sender {
     // No more previous pages.
     if (m_srOffset == 0) {
         return;
@@ -127,8 +125,7 @@
     [self performSearch];
 }
 
-- (IBAction)onNext:(id)sender
-{
+- (IBAction)onNext:(id)sender {
     if (m_srOffset + m_pageSize < m_totalHits) {
         m_srOffset += m_pageSize;
         m_currPage++;
@@ -140,13 +137,11 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [m_searchResults count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = [indexPath row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -171,8 +166,7 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger row = [indexPath row];
     NSDictionary *searchEntry = [m_searchResults objectAtIndex:row];
     NSString *strUrl = [self getUrlFromTitle:[searchEntry objectForKey:@"title"]];
@@ -187,8 +181,7 @@
 
 #pragma mark - Activity Indicator
 
--(void)showActivityViewer
-{
+-(void)showActivityViewer {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     UIWindow *window = delegate.window;
     m_activityView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, window.bounds.size.width, window.bounds.size.height)];
@@ -207,8 +200,7 @@
     [[[m_activityView subviews] objectAtIndex:0] startAnimating];
 }
 
--(void)hideActivityViewer
-{
+-(void)hideActivityViewer {
     [[[m_activityView subviews] objectAtIndex:0] stopAnimating];
     [m_activityView removeFromSuperview];
     m_activityView = nil;

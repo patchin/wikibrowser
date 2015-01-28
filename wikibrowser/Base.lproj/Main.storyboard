@@ -71,7 +71,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="m_nextButton" destination="4x1-oo-Nw9" id="FVz-Qe-hBv"/>
                         <outlet property="m_pagingLabel" destination="nwg-ZW-oZW" id="8bN-Je-242"/>
+                        <outlet property="m_prevButton" destination="4wt-aZ-a88" id="zbT-qf-cya"/>
                         <outlet property="m_searchBar" destination="7mJ-J1-d1y" id="25U-5P-ZBg"/>
                         <outlet property="m_tableView" destination="jph-po-wjC" id="Zwg-10-96v"/>
                     </connections>

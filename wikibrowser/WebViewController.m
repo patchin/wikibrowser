@@ -23,13 +23,11 @@
 }
 
 // TODO: Replace with property?
-- (void)setUrl:(NSURL *)url
-{
+- (void)setUrl:(NSURL *)url {
     m_url = url;
 }
 
-- (IBAction)backToSearchPage:(id)sender
-{
+- (IBAction)backToSearchPage:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         // do nothing
     }];

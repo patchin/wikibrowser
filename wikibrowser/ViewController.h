@@ -13,6 +13,9 @@
     IBOutlet UISearchBar *m_searchBar;
     IBOutlet UITableView *m_tableView;
     IBOutlet UIBarButtonItem *m_pagingLabel;
+    IBOutlet UIBarButtonItem *m_prevButton;
+    IBOutlet UIBarButtonItem *m_nextButton;
+    
     NSArray *m_searchResults;
     NSInteger m_srOffset;
     int m_currPage;
