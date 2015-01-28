@@ -17,7 +17,7 @@
     IBOutlet UIBarButtonItem *m_nextButton;
     
     NSArray *m_searchResults;
-    NSInteger m_srOffset;
+    int m_srOffset;
     int m_currPage;
     int m_pageSize;
     int m_totalHits;

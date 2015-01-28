@@ -10,10 +10,10 @@
 #import "NSString+UrlEncodeForWiki.h"
 #import "WebViewController.h"
 #import "AppDelegate.h"
+#import "WikiSearch.h"
 
 // TODO: No results message.
 // TODO: Fancier dates (n days ago, n hours ago)
-// TODO: Unit testing.
 
 @interface ViewController ()
 
@@ -51,48 +51,42 @@
 }
 
 - (void)performSearch {
-    // Perform wiki search with the string.
-    NSString *strFormat = @"http://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=%@&srprop=timestamp&format=json&sroffset=%i";
-    NSString *strUrl = [NSString stringWithFormat:strFormat, [m_searchTerm urlEncodeForWiki], m_srOffset];
-    NSURL *url = [NSURL URLWithString:strUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data, NSError *connectionError)
-     {
-         if (data.length > 0 && connectionError == nil)
-         {
-             NSDictionary *searchResult = [NSJSONSerialization JSONObjectWithData:data
-                                                                          options:0
-                                                                            error:NULL];
-             #ifdef DEBUG
-             NSLog(@"Got data: %@\n", searchResult);
-             #endif
-             
-             m_searchResults = [[searchResult objectForKey:@"query"] objectForKey:@"search"];
-             m_totalHits = [[[[searchResult objectForKey:@"query"] objectForKey:@"searchinfo"] objectForKey:@"totalhits"] intValue];
-
-             NSString *strPageCaption;
-             
-             if (m_pageSize < m_totalHits) {
-                 int numPages = (m_totalHits + m_pageSize - 1) / m_pageSize; // ceil of m_totalHits/m_pageSize
-                 strPageCaption = [NSString stringWithFormat:@"Page %i of %i", m_currPage, numPages];
-             }
-             else {
-                 strPageCaption = @"All results.";
-             }
-             
-             [m_pagingLabel setTitle:strPageCaption];
-             
-             // this block is being performed on the main thread so the following
-             // call is safe
-             [self hideActivityViewer];
-             
-             [m_tableView reloadData];
-         }
-     }];
     
+    [WikiSearch performSearch:[m_searchTerm urlEncodeForWiki] atOffset:m_srOffset
+                withBlock:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+                    {
+                        if (data.length > 0 && connectionError == nil)
+                        {
+                             NSDictionary *searchResult = [NSJSONSerialization JSONObjectWithData:data
+                                                                                          options:0
+                                                                                            error:NULL];
+                             #ifdef DEBUG
+                             NSLog(@"Got data: %@\n", searchResult);
+                             #endif
+                             
+                             m_searchResults = [[searchResult objectForKey:@"query"] objectForKey:@"search"];
+                             m_totalHits = [[[[searchResult objectForKey:@"query"] objectForKey:@"searchinfo"] objectForKey:@"totalhits"] intValue];
+                             
+                             NSString *strPageCaption;
+                             
+                             if (m_pageSize < m_totalHits) {
+                                 int numPages = (m_totalHits + m_pageSize - 1) / m_pageSize; // ceil of m_totalHits/m_pageSize
+                                 strPageCaption = [NSString stringWithFormat:@"Page %i of %i", m_currPage, numPages];
+                             }
+                             else {
+                                 strPageCaption = @"All results.";
+                             }
+                             
+                             [m_pagingLabel setTitle:strPageCaption];
+                             
+                             // this block is being performed on the main thread so the following
+                             // call is safe
+                             [self hideActivityViewer];
+                             
+                             [m_tableView reloadData];
+                         }
+                    }];
+   
     // Show activity indicator.
     // Previous call is to asynch method so it returns immediately.
     // Now on main thread we show activity indicator.
@@ -180,7 +174,7 @@
 
 #pragma mark - Activity Indicator
 
--(void)showActivityViewer {
+- (void)showActivityViewer {
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     UIWindow *window = delegate.window;
     m_activityView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, window.bounds.size.width, window.bounds.size.height)];
@@ -199,7 +193,7 @@
     [[[m_activityView subviews] objectAtIndex:0] startAnimating];
 }
 
--(void)hideActivityViewer {
+- (void)hideActivityViewer {
     [[[m_activityView subviews] objectAtIndex:0] stopAnimating];
     [m_activityView removeFromSuperview];
     m_activityView = nil;

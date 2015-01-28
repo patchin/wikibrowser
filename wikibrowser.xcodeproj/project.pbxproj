@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EF4672FB1A78C10500EA4D4C /* NSString+UrlEncodeForWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52B11A77474400743AB1 /* NSString+UrlEncodeForWiki.m */; };
+		EF4672FE1A78C9A400EA4D4C /* WikiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4672FD1A78C9A400EA4D4C /* WikiSearch.m */; };
+		EF4672FF1A78C9A400EA4D4C /* WikiSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = EF4672FD1A78C9A400EA4D4C /* WikiSearch.m */; };
 		EF7C528D1A773C9A00743AB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C528C1A773C9A00743AB1 /* main.m */; };
 		EF7C52901A773C9A00743AB1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C528F1A773C9A00743AB1 /* AppDelegate.m */; };
 		EF7C52931A773C9A00743AB1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF7C52921A773C9A00743AB1 /* ViewController.m */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF4672FC1A78C9A400EA4D4C /* WikiSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WikiSearch.h; sourceTree = "<group>"; };
+		EF4672FD1A78C9A400EA4D4C /* WikiSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WikiSearch.m; sourceTree = "<group>"; };
 		EF7C52871A773C9A00743AB1 /* wikibrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wikibrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF7C528B1A773C9A00743AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF7C528C1A773C9A00743AB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				EF7C52B11A77474400743AB1 /* NSString+UrlEncodeForWiki.m */,
 				EF7C52B31A774B0200743AB1 /* WebViewController.h */,
 				EF7C52B41A774B0200743AB1 /* WebViewController.m */,
+				EF4672FC1A78C9A400EA4D4C /* WikiSearch.h */,
+				EF4672FD1A78C9A400EA4D4C /* WikiSearch.m */,
 			);
 			path = wikibrowser;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 				EF7C52931A773C9A00743AB1 /* ViewController.m in Sources */,
 				EF7C52B51A774B0200743AB1 /* WebViewController.m in Sources */,
 				EF7C52901A773C9A00743AB1 /* AppDelegate.m in Sources */,
+				EF4672FE1A78C9A400EA4D4C /* WikiSearch.m in Sources */,
 				EF7C528D1A773C9A00743AB1 /* main.m in Sources */,
 				EF7C52B21A77474400743AB1 /* NSString+UrlEncodeForWiki.m in Sources */,
 			);
@@ -242,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF4672FF1A78C9A400EA4D4C /* WikiSearch.m in Sources */,
 				EF7C52A71A773C9A00743AB1 /* wikibrowserTests.m in Sources */,
 				EF4672FB1A78C10500EA4D4C /* NSString+UrlEncodeForWiki.m in Sources */,
 			);
