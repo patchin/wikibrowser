@@ -22,7 +22,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-// TODO: Replace with property?
 - (void)setUrl:(NSURL *)url {
     m_url = url;
 }

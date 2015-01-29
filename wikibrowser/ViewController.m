@@ -12,8 +12,8 @@
 #import "AppDelegate.h"
 #import "WikiSearch.h"
 
-// TODO: No results message.
-// TODO: Fancier dates (n days ago, n hours ago)
+#define WIKI_URL_TEMPLATE @"http://en.wikipedia.org/wiki/%@"
+#define PAGING_LABEL_TEMPLATE @"Page %i of %i"
 
 @interface ViewController ()
 
@@ -39,6 +39,7 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     m_searchTerm = searchBar.text;
+
     // New search being performed so reset some vars.
     m_srOffset  = 0;
     m_currPage  = 1;
@@ -50,6 +51,9 @@
     [self performSearch];
 }
 
+//
+// Send a search request to Wikipedia and process the results. Update the table view with the search results.
+//
 - (void)performSearch {
     
     [WikiSearch performSearch:[m_searchTerm urlEncodeForWiki] atOffset:m_srOffset
@@ -71,7 +75,7 @@
                              
                              if (m_pageSize < m_totalHits) {
                                  int numPages = (m_totalHits + m_pageSize - 1) / m_pageSize; // ceil of m_totalHits/m_pageSize
-                                 strPageCaption = [NSString stringWithFormat:@"Page %i of %i", m_currPage, numPages];
+                                 strPageCaption = [NSString stringWithFormat:PAGING_LABEL_TEMPLATE, m_currPage, numPages];
                              }
                              else {
                                  strPageCaption = @"All results.";
@@ -88,19 +92,25 @@
                     }];
    
     // Show activity indicator.
-    // Previous call is to asynch method so it returns immediately.
+    // Previous call is to async method so it returns immediately.
     // Now on main thread we show activity indicator.
     // When results arrive, callback block will execute on main thread
     // and hide the activity indicator.
     [self showActivityViewer];
 }
 
+//
+// Generate the Wikipedia url for an article given the title.
+//
 - (NSString *)getUrlFromTitle:(NSString *)title {
     NSString *entry = [title urlEncodeForWiki];
-    NSString *strUrl = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/%@", entry];
+    NSString *strUrl = [NSString stringWithFormat:WIKI_URL_TEMPLATE, entry];
     return strUrl;
 }
 
+//
+// Display the previous page of search results.
+//
 - (IBAction)onPrev:(id)sender {
     // No more previous pages.
     if (m_srOffset == 0) {
@@ -114,15 +124,18 @@
         m_currPage = 1;
     }
     
-    // Perform search with the current search term.
+    // Perform search with the current search params.
     [self performSearch];
 }
 
+//
+// Display the next page of search results.
+//
 - (IBAction)onNext:(id)sender {
     if (m_srOffset + m_pageSize < m_totalHits) {
         m_srOffset += m_pageSize;
         m_currPage++;
-        // Perform search with the current search term.
+        // Perform search with the current search params.
         [self performSearch];
     }
     // else - no more next pages
